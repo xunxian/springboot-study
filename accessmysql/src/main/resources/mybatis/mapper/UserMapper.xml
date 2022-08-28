@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.accessmysql.mapper.UserMapper">
+    <select id="queryUserList" resultType="User">
+        select empno, ename, job from test.emp
+
+    </select>
+
+    <select id="queryUserById" resultType="User">
+        select empno, ename, job
+        from test.emp
+        where empno=#{empNo};
+    </select>
+
+    <insert id="addUser" parameterType="User">
+        insert into test.emp(empno,ename,job)
+        values(#{empNo},#{eName},#{job});
+
+    </insert>
+
+    <update id="updateUser" parameterType="User">
+        update test.emp
+        set ename=#{eName},job=#{job}
+        where empno=#{empNo};
+    </update>
+
+    <delete id="delUser" parameterType="int">
+        delete
+        from test.emp
+        where empno=#{empNo};
+
+    </delete>
+
+</mapper>
