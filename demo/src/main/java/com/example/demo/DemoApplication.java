@@ -17,7 +17,7 @@ public class DemoApplication {
         SpringApplication.run(DemoApplication.class, args);
     }
 
-    @GetMapping("/test")
+    @GetMapping("/test1")
     public String hello(@RequestParam(value = "inputname", defaultValue = "Max") String name) throws IOException {
         String hostName = InetAddress.getLocalHost().getHostName().toString();
         return String.format("hello %s", hostName);
