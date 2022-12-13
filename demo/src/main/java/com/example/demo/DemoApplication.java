@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
+import java.net.InetAddress;
+
 @SpringBootApplication
 @RestController
 public class DemoApplication {
@@ -14,9 +17,10 @@ public class DemoApplication {
         SpringApplication.run(DemoApplication.class, args);
     }
 
-    @GetMapping("/hello")
-    public String hello(@RequestParam(value = "inputname", defaultValue = "Max") String name) {
-        return String.format("hello %s", name);
+    @GetMapping("/test")
+    public String hello(@RequestParam(value = "inputname", defaultValue = "Max") String name) throws IOException {
+        String hostName = InetAddress.getLocalHost().getHostName().toString();
+        return String.format("hello %s", hostName);
     }
 
 }
